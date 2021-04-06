@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Hello {{ buyer.name }} {{ buyer.surname }}</h3>
+    <h3>Order number: {{ request_id }}</h3>
+    <h3>Status: {{ current_status.status }}</h3>
+    <h3>Message: {{ current_status.message }}</h3>
+    <form action='/' method="GET">{% csrf_token %}
+        <input type="submit" value="CREATE NEW ORDER"/>
+    </form>
+    <br>
+    <form action='/check' method="GET">{% csrf_token %}
+        <input type="submit" value="CHECK ORDER STATUS"/>
+    </form>
+    <br>
+    {% if current_status.status == 'PENDING'%}
+        <form action={{ process_url }} method="GET">{% csrf_token %}
+        <input type="submit" value="PAY"/>
+    </form>
+    {% endif %}
+
+{% endblock %}

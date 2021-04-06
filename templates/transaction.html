@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Enter your data to make the payment</h3>
+    <form action="." method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="CREATE ORDER"/>
+    </form>
+    <br>
+    <form action="/check" method="GET">{% csrf_token %}
+        <input type="submit" value="CHECK ORDER STATUS"/>
+    </form>
+    <br>
+    <form action="/orders" method="GET">{% csrf_token %}
+        <input type="submit" value="LIST OF ORDERS"/>
+    </form>
+{% endblock %}
