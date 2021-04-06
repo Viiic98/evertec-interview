@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>LIST OF ORDERS</h2>
+    <form action="/" method="GET">{% csrf_token %}
+        <input type="submit" value="CREATE ORDER"/>
+    </form>
+    <ul>
+    {% for order in orders %}
+        <b>Order Id: {{ order.id }}</b>
+        <p>
+            Name: {{ order.customer_email }}<br>
+            Surname: {{ order.customer_email }}<br>
+            Document: {{ order.customer_doc_type }} {{ order.customer_document }}<br>
+            Email: {{ order.customer_email }}<br>
+            Mobile: {{ order.customer_mobile }}<br>
+            Status: {{ order.status }}<br>
+            Created at: {{ order.created_at }}<br>
+            Updated at: {{ order.updated_at }}<br>
+            RequestId: {{ order.request_id }}<br>
+            ProcessURL: {{ order.process_url }}<br>
+        </p>
+    {% endfor %}
+    </ul>
+{% endblock %}

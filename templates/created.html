@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>YOUR TRANSACTION HAS BEEN CREATED SUCCESSFULLY</h1>
+    <h3>Summary</h3>
+    <h4>Name: {{ buyer.name}} {{ buyer.surname }}</h4>
+    <h4>Email: {{ buyer.email }}</h4>
+    <h4>Phone: {{ buyer.mobile }}</h4>
+    <h4>Document: {{ buyer.documentType }} {{ buyer.document }}</h4>
+    <h4>Description: {{ desc }}</h4>
+    <h4>Amount to pay: {{ amount.currency }} {{ amount.total }}</h4>
+    <h4>Request Id of your transaction: {{ request_id }}</h4>
+    <h4>Don't forget the request id to check the status of your transaction</h4>
+    <p>Please choose an option</p>
+    <form action={{ process_url }} method="GET">{% csrf_token %}
+        <input type="submit" value="PAY"/>
+    </form>
+    <br>
+    <form action='/' method="GET">{% csrf_token %}
+        <input type="submit" value="CREATE A NEW ORDER"/>
+    </form>
+{% endblock %}
