@@ -53,7 +53,6 @@ def transaction(request):
             # Authentication
             auth = RedirectionAuth().get_auth()
             data['auth'] = auth
-            print(data)
             r = requests.post(URL, json=data)
             response = r.json()
             # Store request id and process url
